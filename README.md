@@ -1,2 +1,2 @@
-# baekjoon
+# Algorithm
 boj
