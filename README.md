@@ -1,2 +1,3 @@
 # Algorithm
-boj
+
+⌨️ preparation for coding test
