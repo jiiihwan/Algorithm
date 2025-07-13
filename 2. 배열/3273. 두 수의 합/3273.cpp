@@ -16,7 +16,7 @@ int main(void){
     cin >> x;
 
     for(int i = 0 ; i < n ; i++){
-        if(x-a[i] > 0 && occur[x-a[i]]) //x-a[i] 가 양수여야지 인덱스 조건에 맞기 때문. x보다 a[i]가 
+        if(x-a[i] > 0 && occur[x-a[i]]) //x-a[i] 가 양수여야지 인덱스 조건에 맞기 때문. x보다 a[i]가 클수도있으니.
             count++;
         occur[a[i]] = true;
     }
