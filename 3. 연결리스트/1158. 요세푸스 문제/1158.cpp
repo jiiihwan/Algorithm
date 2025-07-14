@@ -9,12 +9,12 @@ int main(void){
     cin >> N >> K;
 
     vector<int> V,ans;
-    for(int i = 1 ; i < N ; i++){
+    for(int i = 1 ; i <= N ; i++){
         V.push_back(i);
     }
 
     for(int i = 0 ; ans.size() < N ; i++){
-        if(i % K == K -1){
+        if(i % K == K - 1){
             ans.push_back(V[i]);
         }
         else
@@ -23,7 +23,7 @@ int main(void){
     
     cout << "<";
     for(int i = 0 ; i < N ; i++){
-        if(i == N)
+        if(i == N-1)
             cout << ans[i];
         else   
             cout << ans[i] << ", ";
