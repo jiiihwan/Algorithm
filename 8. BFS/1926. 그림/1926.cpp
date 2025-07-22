@@ -17,7 +17,7 @@ int main(void){
 
     cin >> n >> m;
     for(int i = 0 ; i < n ; i++)
-        for(int j = 0 ; i < m ; j++)
+        for(int j = 0 ; j < m ; j++)
             cin >> board[i][j]; //board에 주어진 값 채워넣기
     
     int mx = 0; //그림의 최댓값
