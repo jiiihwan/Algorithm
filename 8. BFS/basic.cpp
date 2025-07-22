@@ -22,8 +22,9 @@ int main(void){
     while(!Q.empty()){
         pair<int,int> cur = Q.front();
         Q.pop();
-        cout << '(' << cur.X << ", " << cur.Y << ") ->";
+        //cout << '(' << cur.X << ", " << cur.Y << ") ->";
 
+        //여기부턴 진짜 외우기
         for(int dir = 0; dir < 4; dir++){
             int nx = cur.X + dx[dir]; //아래거부터 시계방향으로 돌면서 조회
             int ny = cur.Y + dy[dir]; 
