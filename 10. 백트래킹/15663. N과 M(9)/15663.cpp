@@ -17,7 +17,7 @@ void func(int k){
     
     int tmp;
     for(int i = 0 ; i < n ; i++){
-        if(!isused[i] && tmp == arr[k]){
+        if(!isused[i] && tmp != num[i]){
             isused[i] = true;
             arr[k] = num[i]; //k번째의 인덱스를 고르는 거니까 arr에 i번째 인덱스를 담는다
             tmp = arr[k];
