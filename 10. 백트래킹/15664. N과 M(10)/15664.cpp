@@ -16,7 +16,7 @@ void func(int k){
     }
     
     int tmp=0,st=0;
-    if(st!=0)
+    if(st!=0) //0이면 실행되면 안되니까.
         st = k + 1;
     for(int i = st ; i < n ; i++){
         if(!isused[i] && tmp != num[i]){

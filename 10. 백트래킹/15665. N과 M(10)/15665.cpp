@@ -13,10 +13,9 @@ void func(int k){
         cout << '\n';
         return;
     }
-    int tmp = 0, st = 0 ;
-    if(st!=0)
-        st = k;
-    for(int i = st; i < n ; i++){
+
+    int tmp = 0;
+    for(int i = 0; i < n ; i++){
         if(tmp != num[i]){
             arr[k] = num[i];
             tmp = arr[k];
