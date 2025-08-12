@@ -5,9 +5,8 @@ using namespace std;
 int n,m;
 int arr[10];
 int num[10];
-bool isused[10];
 
-void func(int k){
+void func(int k, int st){
     if(k==m){
         for(int i = 0 ; i < m ; i++)
             cout << arr[i] << ' ';
@@ -15,16 +14,12 @@ void func(int k){
         return;
     }
     
-    int tmp=0,st=0;
-    if(st!=0) //0이면 실행되면 안되니까.
-        st = k + 1;
+    int tmp=0;
     for(int i = st ; i < n ; i++){
-        if(!isused[i] && tmp != num[i]){
-            isused[i] = true;
+        if(tmp != num[i]){
             arr[k] = num[i]; //k번째의 인덱스를 고르는 거니까 arr에 i번째 인덱스를 담는다
             tmp = arr[k];
-            func(k+1);
-            isused[i] = false;
+            func(k+1, i+1); //이전 단계에서 어디까지 골랐는지를 다음 재귀로 넘겨줘야하니까 이걸 인자에 포함시켜서 전달한다.
         }
 
     }
@@ -38,5 +33,5 @@ int main(void){
     for(int i = 0 ; i < n ; i++) 
         cin >> num[i];
     sort(num, num+n);
-    func(0);
+    func(0,0);
 }
