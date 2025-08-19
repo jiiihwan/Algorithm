@@ -33,9 +33,9 @@ int main(void){
     int ans = 9999999;
     do{
         int dist = 0;
-        for(auto h : house){
+        for(auto h : house){ //집 마다 조회
             int tmp = 9999999;
-            for(int i = 0 ; i < chicken.size() ; i++){
+            for(int i = 0 ; i < chicken.size() ; i++){ // 
                 if(brute[i] == 0)
                     continue;
                 tmp = min(tmp, abs(chicken[i].X - h.X) + abs(chicken[i].Y - h.Y));
