@@ -63,7 +63,7 @@ int main(void){
                         del.push_back(t);
                 }
                 temp.clear();
-                
+                //memo. 굳이 temp를 이용할 필요없이 4개 이상일때 board에서 지우면 된다.
             }
         }
 
