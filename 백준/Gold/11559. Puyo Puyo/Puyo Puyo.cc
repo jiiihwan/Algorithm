@@ -2,6 +2,7 @@
 #include <utility>
 #include <queue>
 #include <vector>
+#include <algorithm>
 using namespace std;
 #define X first
 #define Y second
@@ -70,28 +71,19 @@ int main(void){
         if(!del.empty()){
             boom++;
             // 1. 터진 뿌요들을 모두 '.'으로 변경
-            for(auto d : del) {
+            for(auto d : del){
                 board[d.X][d.Y] = '.';
             }
 
-            // 2. 각 열에 대해 중력 적용
-            for(int j = 0; j < 6; j++){
-                queue<char> puyos;
-                // 현재 열에 있는 뿌요들을 순서대로 큐에 저장
-                for(int i = 11; i >= 0; i--){
-                    if(board[i][j] != '.'){
-                        puyos.push(board[i][j]);
+            // 2. 스왑(swap) 방식으로 중력 적용
+            for(int j = 0; j < 6; j++){ // 각 열에 대해
+                for(int i = 10; i >= 0; i--){ // 아래에서부터 위로 올라가며
+                    int current_row = i;
+                    // 현재 칸에 뿌요가 있고, 그 아래 칸이 비어있다면 계속 내림
+                    while(current_row < 11 && board[current_row+1][j] == '.'){
+                        swap(board[current_row][j], board[current_row+1][j]);
+                        current_row++;
                     }
-                }
-                // 현재 열을 모두 '.'으로 초기화
-                for(int i = 11; i >= 0; i--){
-                    board[i][j] = '.';
-                }
-                // 큐에 저장된 뿌요들을 아래부터 다시 채워넣기
-                int idx = 11;
-                while(!puyos.empty()){
-                    board[idx--][j] = puyos.front();
-                    puyos.pop();
                 }
             }
         }
