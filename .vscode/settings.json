@@ -24,6 +24,7 @@
         "regex": "cpp",
         "valarray": "cpp",
         "utility": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "iosfwd": "cpp"
     }
 }
