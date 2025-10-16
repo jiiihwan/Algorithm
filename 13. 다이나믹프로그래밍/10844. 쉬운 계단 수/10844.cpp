@@ -24,7 +24,7 @@ int main(void){
 
     long long ans = 0;
     for(int i = 0 ; i <= 9 ; i++){
-        ans += D[N][i] % MOD;
+        ans += D[N][i];
     }
 
     cout << ans % MOD;
