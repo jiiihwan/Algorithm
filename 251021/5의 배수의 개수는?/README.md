@@ -1,4 +1,4 @@
-# [5의 배수의 개수는?](https://www.codetree.ai/trails/complete/curated-cards/nl-pre-2d-array-variables-2)
+# [5의 배수의 개수는](https://www.codetree.ai/trails/complete/curated-cards/nl-pre-2d-array-variables-2)
 
 |유형|문제 경험치|난이도|
 |---|---|---|
