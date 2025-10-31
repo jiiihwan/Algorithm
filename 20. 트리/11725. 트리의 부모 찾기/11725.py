@@ -10,9 +10,9 @@ p = [[] for _ in range(N+1)] #parent
 
 def dfs(cur):
     for nxt in adj[cur]:
-        if p[cur] == nxt:
+        if p[cur] == nxt: #nxt가 현재노드의 부모라면 뛰어넘기
             continue
-        p[nxt] = cur
+        p[nxt] = cur #다음 노드의 부모는 현재노드이다
         dfs(nxt)
 
 for _ in range(N-1):
