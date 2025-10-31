@@ -6,7 +6,7 @@ N = int(input())
 
 #1-based index
 adj = [[] for _ in range(N+1)]
-p = [[] for _ in range(N+1)] #parent
+p = [0] * (N+1) #parent
 
 def dfs(cur):
     for nxt in adj[cur]:
