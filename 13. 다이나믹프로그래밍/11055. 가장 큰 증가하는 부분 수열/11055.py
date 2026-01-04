@@ -18,3 +18,4 @@ for i in range(N-1):
         mn = min(mn,A[i])
 
 print(max(D))
+print(D)
