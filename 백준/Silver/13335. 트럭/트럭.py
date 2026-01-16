@@ -2,32 +2,25 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-n,w,L = map(int,input().split())
-trucks = list(map(int,input().split()))
+n, w, L = map(int, input().split())
+trucks = deque(map(int, input().split()))
 
-ans,weight_sum = 0,0
-br = deque()
-for _ in range(w):
-    br.append(0) #무게 0인 트럭들로 채우기
+bridge = deque([0] * w)
+time = 0
+weight_sum = 0
 
-i = 0 #트럭 조회용 인덱스
-while True:
-    if i >= n and weight_sum == 0:
-        break
-    elif i < n and weight_sum+trucks[i] <= L: #이번 트럭이 올라갔을 때 무게 제한 이내라면
-        weight_sum -= br.popleft()
-        br.append(trucks[i])
-        ans += 1
-        weight_sum += trucks[i]
-        i += 1
+while trucks or weight_sum > 0:
+    time += 1
+
+    # 1) 한 칸 전진: 맨 앞이 내려감
+    weight_sum -= bridge.popleft()
+
+    # 2) 새 트럭 투입 시도
+    if trucks and weight_sum + trucks[0] <= L:
+        t = trucks.popleft()
+        bridge.append(t)
+        weight_sum += t
     else:
-        weight_sum -= br.popleft()
-        if i < n and weight_sum+trucks[i] <= L:
-            br.append(trucks[i])
-            weight_sum += trucks[i]
-            i += 1
-        else:
-            br.append(0)
-        ans += 1
+        bridge.append(0)
 
-print(ans)
+print(time)
