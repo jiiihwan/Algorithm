@@ -35,9 +35,6 @@ while q:
         nx = curX + dx[dir]
         ny = curY + dy[dir]
         if board[nx][ny] == 0: #벽이 아니라 후진가능하면
-            if vis[nx][ny] == 0: #청소 안한 칸이면 청소하기
-                vis[nx][ny] = vis[curX][curY] + 1
-                ans += 1
             q.append([nx,ny])
             dir = (dir+2) % 4 #바라보는 방향 원상복구
         else:
