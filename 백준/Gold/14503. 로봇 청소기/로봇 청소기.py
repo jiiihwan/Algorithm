@@ -12,21 +12,6 @@ r,c,dir = map(int,input().split())
 board = [list(map(int,input().split())) for _ in range(N)]
 vis = [[0]*M for _ in range(N)]
 
-'''
-board = []
-vis = []
-for _ in range(N):
-    a = list(map(int,input().split()))
-    board.append(a)
-    vis.append(a)
-'''
-
-def OOB(i,j):
-    if i < 0 or i >= N or j < 0 or j >= M:
-        return True
-    else:
-        return False
-
 q = deque()
 q.append([r,c])
 vis[r][c] = 1
