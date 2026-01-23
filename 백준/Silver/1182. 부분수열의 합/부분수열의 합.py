@@ -3,7 +3,7 @@ nums = list(map(int, input().split()))
 
 ans = 0
 
-def dfs(idx, total):
+def backtracking(idx, total):
     global ans
 
     if idx == N:
@@ -12,11 +12,11 @@ def dfs(idx, total):
         return
 
     # 현재 숫자 선택
-    dfs(idx + 1, total + nums[idx])
+    backtracking(idx + 1, total + nums[idx])
     # 현재 숫자 미선택
-    dfs(idx + 1, total)
+    backtracking(idx + 1, total)
 
-dfs(0, 0)
+backtracking(0, 0)
 
 # 공집합 제거 (S == 0 인 경우)
 if S == 0:
