@@ -1,22 +1,25 @@
 N, S = map(int, input().split())
 nums = list(map(int, input().split()))
 
-arr = []
 ans = 0
 
-def backtracking(start, depth, current_sum):
+def dfs(idx, total):
     global ans
 
-    if arr and current_sum == S:
-        ans += 1
-
-    if depth == N:
+    if idx == N:
+        if total == S:
+            ans += 1
         return
 
-    for i in range(start, N):
-        arr.append(nums[i])
-        backtracking(i + 1, depth + 1, current_sum + nums[i])
-        arr.pop()
+    # 현재 숫자 선택
+    dfs(idx + 1, total + nums[idx])
+    # 현재 숫자 미선택
+    dfs(idx + 1, total)
 
-backtracking(0, 0, 0)
+dfs(0, 0)
+
+# 공집합 제거 (S == 0 인 경우)
+if S == 0:
+    ans -= 1
+
 print(ans)
