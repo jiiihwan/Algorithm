@@ -8,7 +8,7 @@ password = []
 def make_password(start,depth):
     global cnt_vowel, cnt_else
     if cnt_vowel >= 1 and cnt_else >= 2 and depth == L:
-        print(''.join(password))
+        print(*password, sep='')
         return
     for i in range(start, C):
         if alphabets[i] in vowel:
