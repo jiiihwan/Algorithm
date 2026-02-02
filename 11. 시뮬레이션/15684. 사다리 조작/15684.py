@@ -22,7 +22,7 @@ def backtracking(depth, start_i, start_j):
 
     for i in range(start_i, H):
         for j in range(N-1):
-            if i == start_i and j < start_j:
+            if i == start_i and j < start_j: #2차원 start
                 continue
             if board[i][j] == -1 and board[i][j+1] == -1: #양옆이 비어있을 때
                 board[i][j] = j+1
@@ -43,7 +43,7 @@ for _ in range(M):
     board[a][b+1] = b
 
 ans = 4
-backtracking(0,1,1)
+backtracking(0,0,0)
 
 if ans > 3:
     ans = -1
