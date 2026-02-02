@@ -2,34 +2,35 @@ import sys
 input = sys.stdin.readline
 
 def play():
-    #사다리게임을 수행하고 result를 반환하는 함수
-    result = [0]*N
     for col in range(N): #사다리
         j = col #열
         i = 0 #행
-        while(i < H):
-            if board[i][j] == -1:
-                i += 1
-            else: #사다리가 연결되어있으면 열 이동후 내려감
+        for i in range(H):
+            if board[i][j] != -1:
                 j = board[i][j]
-                i += 1
-        result[j] = col
-    return result
+        if j != col:
+            return False
+    return True
 
-def backtracking(depth):
+def backtracking(depth, start_i, start_j):
     global ans
-    if play() == correct:
-        ans = min(ans, depth)
+    if depth > 3 or depth >= ans:
         return
-    if depth == len(avilable):
+    if play():
+        ans = depth
         return
-    for i,j in avilable:
-        if board[i][j] == -1 and board[i][j+1] == -1:
-            board[i][j] = j+1
-            board[i][j+1] = j
-            backtracking(depth+1)
-            board[i][j] = -1
-            board[i][j+1] = -1
+
+    for i in range(start_i, H):
+        for j in range(N-1):
+            if i == start_i and j < start_j:
+                continue
+            if board[i][j] == -1 and board[i][j+1] == -1: #양옆이 비어있을 때
+                board[i][j] = j+1
+                board[i][j+1] = j
+                backtracking(depth+1, i, j)
+                board[i][j] = -1
+                board[i][j+1] = -1
+
 
 N,M,H = map(int,input().split())
 board = [[-1]*N for _ in range(H)]
@@ -40,19 +41,9 @@ for _ in range(M):
     b -= 1
     board[a][b] = b+1   
     board[a][b+1] = b
-    
-#가능한 가로선들
-avilable = []
-for i in range(H):
-    for j in range(N-1):
-        if board[i][j] == -1 and board[i][j+1] == -1:
-            avilable.append([i,j])
 
-ans = 300
-correct = [i for i in range(N)]
-
-backtracking(0)
-print(avilable)
+ans = 4
+backtracking(0,1,1)
 
 if ans > 3:
     ans = -1
