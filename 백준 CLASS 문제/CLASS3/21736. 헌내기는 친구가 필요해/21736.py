@@ -10,9 +10,10 @@ board = [list(input().rstrip()) for _ in range(N)]
 vis = [[0]*M for _ in range(N)]
 
 for i in range(N):
-    if 'I' in board[i]:
-        doyeon_i, doyeon_j = i, board[i].index('I')
-
+    for j in range(M):
+        if board[i][j] == 'I':
+            doyeon_i, doyeon_j = i,j
+            break
 ans = 0
 q = deque()
 q.append([doyeon_i,doyeon_j])
@@ -26,7 +27,7 @@ while q:
             continue
         if vis[nx][ny] or board[nx][ny] == 'X':
             continue
-        if board[nx][ny] == 'P':
+        elif board[nx][ny] == 'P':
             ans += 1
         q.append([nx,ny])
         vis[nx][ny] = 1
