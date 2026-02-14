@@ -7,11 +7,13 @@ nums = sorted(list(map(int,input().split())))
 ans = 0
 for i,n in enumerate(nums):
     left, right = 0,N-1
-    if left == i:
-        left += 1
-    if right == i:
-        right -= 1
     while left < right:
+        if left == i:
+            left += 1
+            continue
+        if right == i:
+            right -= 1
+            continue
         cur_sum = nums[left] + nums[right]
 
         if cur_sum == n:
@@ -21,8 +23,5 @@ for i,n in enumerate(nums):
             left += 1
         else:
             right -= 1
-        if left == i:
-            left += 1
-        if right == i:
-            right -= 1
+
 print(ans)
