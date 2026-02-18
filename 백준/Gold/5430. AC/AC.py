@@ -3,37 +3,33 @@ from collections import deque
 input = sys.stdin.readline
 
 T = int(input())
+
 for _ in range(T):
     p = input().rstrip()
     n = int(input())
-    nums = list(input().rstrip().split(','))
-    #괄호 제거
-    nums[0] = nums[0][1:]
-    nums[n-1] = nums[n-1][:-1]
-    #정수로 변환
-    if n != 0:
-        nums = list(map(int, nums))
+    arr = input().rstrip()[1:-1]  # 대괄호 제거
+    
+    if arr:
+        q = deque(map(int, arr.split(',')))
     else:
-        nums = []
-
-    q = deque(nums)
+        q = deque()
+    
     reverse = False
-    for order in p:
-        if order == 'R':
-            reverse = True if reverse == False else False
-        else: #D
-            try:
-                if reverse:
-                    q.pop()
-                else:
-                    q.popleft()
-            except:
-                print('error')
+    
+    for cmd in p:
+        if cmd == 'R':
+            reverse = not reverse
+        else:  # D
+            if not q:
+                print("error")
                 break
+            
+            if reverse:
+                q.pop()
+            else:
+                q.popleft()
     else:
-        nums = list(q)
         if reverse:
-            nums = nums[::-1]
-        print('[',end='')
-        print(*nums, sep=',', end='')
-        print(']')
+            q.reverse()
+        
+        print('[' + ','.join(map(str, q)) + ']')
