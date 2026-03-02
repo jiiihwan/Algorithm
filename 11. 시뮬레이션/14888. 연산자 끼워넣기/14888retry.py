@@ -28,6 +28,7 @@ def calculate(idx,result):
                     calculate(idx+1, -(-result//A[idx]))
                 else:
                     calculate(idx+1, result//A[idx])
+            operators[i] += 1
 
 calculate(1,A[0])
 
